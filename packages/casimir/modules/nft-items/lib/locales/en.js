@@ -51,7 +51,7 @@ export default {
       moderation: {
         declineDialog: {
           title: 'Decline',
-          message: 'Are you sure you would like to decline "{title}"?',
+          message: 'Are you sure you would like to decline{title}?',
           reason: 'Reason',
           cancel: 'No, cancel',
           confirm: 'Yes, confirm',
@@ -61,7 +61,7 @@ export default {
           decline: 'Decline',
           approve: 'Approve',
           approveConfirm: {
-            message: 'Are you sure you want to approve "{title}"?',
+            message: 'Are you sure you want to approve{title}?',
             title: 'Approve'
           },
           approveSuccess: 'The item approved successfully!',

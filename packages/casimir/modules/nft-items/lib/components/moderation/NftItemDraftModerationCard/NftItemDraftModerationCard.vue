@@ -32,6 +32,7 @@
       v-if="isDeclineDialogOpened"
       v-model="isDeclineDialogOpened"
       :nft-item-draft="nftItemDraft"
+      :nft-item-title="itemTitle"
       :success-message="successDeclineMessage"
       @success="handleDeclineSuccess"
     />
@@ -92,6 +93,13 @@
     },
 
     computed: {
+      itemTitle() {
+        const isAttributeName = this.$attributes.getMappedData(
+          'nftItem.name',
+          this.nftItemDraft.attributes
+        )?.value;
+        return isAttributeName ? ` ${isAttributeName}` : '';
+      },
       cardSchema() {
         return this.$layouts.getMappedData('nftItem.moderation')?.value;
       },
@@ -135,8 +143,10 @@
       async handleApproveClick() {
         const isConfirmed = await this.$confirm(
           this.$t('module.nftItems.moderation.card.approveConfirm.message',
-                  { title: this.nftItemDraft.title }),
-          { title: this.$t('module.nftItems.moderation.card.approveConfirm.title') }
+                  { title: this.itemTitle }),
+          {
+            title: this.$t('module.nftItems.moderation.card.approveConfirm.title')
+          }
         );
 
         if (isConfirmed) {
