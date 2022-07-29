@@ -10,7 +10,7 @@
     <ve-stack>
       <span>
         {{ $t('module.nftItems.moderation.declineDialog.message',
-              { title: nftItemDraft.title })
+              { title: nftItemTitle })
         }}
       </span>
 
@@ -49,6 +49,10 @@
       nftItemDraft: {
         type: Object,
         default: null
+      },
+      nftItemTitle: {
+        type: String,
+        default: ''
       },
       /** Successful decline message */
       successMessage: {
