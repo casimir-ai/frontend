@@ -69,6 +69,11 @@
         required: true
       },
 
+      nameAttributeKey: {
+        type: String,
+        default: null
+      },
+
       /** Message to show in notification after success approve */
       successApproveMessage: {
         type: String,
@@ -95,7 +100,7 @@
     computed: {
       itemTitle() {
         const isAttributeName = this.$attributes.getMappedData(
-          'nftItem.name',
+          this.nameAttributeKey,
           this.nftItemDraft.attributes
         )?.value;
         return isAttributeName ? ` ${isAttributeName}` : '';
